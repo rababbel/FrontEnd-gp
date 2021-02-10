@@ -1,24 +1,25 @@
-import logo from './logo.svg';
 import './App.css';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import 'antd/dist/antd.css';
+import ConsulterRapports from './Rapports/ConsulterRapports';
+import ConsulterSA from './StructuresAccueils/ConsulterSA';
+import GestionSA from './StructuresAccueils/GestionSA';
+import ajouterSA from './StructuresAccueils/ajouterSA';
+import SAContextProvider from './contexts/SAContext';
 
-function App() {
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <SAContextProvider>
+        <Switch>
+          <Route exact path='/ConsulterRapports' component={ConsulterRapports} />  
+          <Route exact path='/ConsulterSA' component={ConsulterSA} />  
+          <Route exact path='/GestionSA' component={GestionSA} />   
+          <Route exact path='/AjouterSA' component={ajouterSA} />  
+        </Switch>
+      </SAContextProvider>
+    </BrowserRouter>
   );
 }
 
