@@ -5,6 +5,7 @@ import ConsulterRapports from './Rapports/ConsulterRapports';
 import ConsulterSA from './StructuresAccueils/ConsulterSA';
 import GestionSA from './StructuresAccueils/GestionSA';
 import ajouterSA from './StructuresAccueils/ajouterSA';
+import modifierSA from "./StructuresAccueils/modifierSA";
 import SAContextProvider from './contexts/SAContext';
 
 
@@ -17,6 +18,7 @@ const App = () => {
           <Route exact path='/ConsulterSA' component={ConsulterSA} />  
           <Route exact path='/GestionSA' component={GestionSA} />   
           <Route exact path='/AjouterSA' component={ajouterSA} />  
+          <Route exact path='/ModifierSA' component={modifierSA} />  
         </Switch>
       </SAContextProvider>
     </BrowserRouter>

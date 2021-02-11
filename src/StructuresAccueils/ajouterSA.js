@@ -18,14 +18,9 @@ const ajouterSA = (props) => {
     };
 
     const handleAddSA = (values) =>{
-        let SA = { 
-                    nomStructure : values.sa.nomStructure,
-                    description : values.sa.description,
-                    adresse : values.sa.adresse,
-                    email : values.sa.email,
-                    tel : values.sa.tel
-                }
-        SAService.addSA(SA).then(res => {
+        console.log(values.sa);
+
+        SAService.ajouterSA(values.sa).then(res => {
             if(res.data != null){
                 message.success("SA bien enregistrer!!")
             }
@@ -39,65 +34,61 @@ const ajouterSA = (props) => {
     }
 
     return (
-        <div className = "row">
-            <div className = "col mt-lg-5 container">
-            <Form {...layout} name="nest-messages" onFinish={handleAddSA} validateMessages={validateMessages}>
-                <Form.Item
-                    name={['sa', 'nomStructure']}
-                    label="Nom de la structure d'accueil"
-                    rules={[
-                    {
-                        required: true,
-                    },
-                    ]}
-                >
-                    <Input />
-                </Form.Item>
-                <Form.Item
-                    name={['sa', 'email']}
-                    label="Email"
-                    rules={[
-                    {
-                        required: true,
-                        type: 'email',
-                    },
-                    ]}
-                >
-                    <Input />
-                </Form.Item>
-                <Form.Item
-                    name={['sa', 'adresse']}
-                    label="Adresse"
-                    rules={[
-                    {
-                        required: true,
-                    },
-                    ]}
-                >
-                    <InputNumber />
-                </Form.Item>
-                <Form.Item name={['sa', 'tel']} label="Telephone"
-                    rules={[
+        <div className = "mb-3 row">
+            <div className = "col mt-lg-5 container mx-auto">
+                <div className = "Tete form-inline " style={{marginTop:'3%'}} >
+                    <h2 className = "font-weight-bold" style={{marginRight:'10%',marginLeft:'3%'}}>Ajouter une structure d'acceuil</h2>
+                </div>
+                <Form {...layout} name="nest-messages" onFinish={handleAddSA} validateMessages={validateMessages} style={{width: "600px",marginRight:'30%',marginLeft:'25%'}}>
+                    <Form.Item
+                        name={['sa', 'nomStructure']}
+                        label="Nom de la structure d'accueil"
+                        rules={[
                         {
                             required: true,
-                            type: 'tel',
                         },
-                    ]}
-                >
-                    <Input />
-                </Form.Item>
-                <Form.Item name={['sa', 'description']} label="Description">
-                    <Input.TextArea />
-                </Form.Item>
-                <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
-                    <Button type="primary" htmlType="submit">
-                        Ajouter
-                    </Button>
-                    <Button type="primary" onClick = {handleBack} className = "mr-3">
-                            Back
-                    </Button>
-                </Form.Item>
-            </Form>
+                        ]}
+                    >
+                        <Input />
+                    </Form.Item>
+                    <Form.Item
+                        name={['sa', 'email']}
+                        label="Email"
+                        rules={[
+                        {
+                            required: true,
+                            type: 'email',
+                        },
+                        ]}
+                    >
+                        <Input />
+                    </Form.Item>
+                    <Form.Item
+                        name={['sa', 'adresse']}
+                        label="Adresse"
+                        rules={[
+                        {
+                            required: true,
+                        },
+                        ]}
+                    >
+                        <Input.TextArea />
+                    </Form.Item>
+                    <Form.Item name={['sa', 'tel']} label="Telephone">
+                        <Input />
+                    </Form.Item>
+                    <Form.Item name={['sa', 'description']} label="Description">
+                        <Input.TextArea />
+                    </Form.Item>
+                    <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
+                        <Button type="primary" htmlType="submit">
+                            Ajouter
+                        </Button>
+                        <Button type="primary" onClick = {handleBack} style={{marginLeft:'65%'}}>
+                                Back
+                        </Button>
+                    </Form.Item>
+                </Form>
             </div>
         </div>
     )
